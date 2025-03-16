@@ -1,0 +1,24 @@
+@media (max-width: 1200px) {
+    .collapse{
+        display: block;
+    }
+    .sidemenu{
+        display: none;
+    }
+    .rbtnCon label{
+        padding-inline: 1rem;
+    }
+    button:not(td button){
+        padding-inline: 1rem;
+    }
+}
+
+/* @media (max-width: 1201px) {
+    .sidebarCollapse{
+        display: none;
+    }
+} */
+
+/* @media (max-width: 1200px) {
+    
+} */

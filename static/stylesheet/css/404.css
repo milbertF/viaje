@@ -1,0 +1,49 @@
+div{
+    border: red solid 1px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.whole{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+img{
+    width: 25rem;
+}
+p{
+    font-size: 1.3rem;
+}
+button{
+    margin: 2rem;
+    background-color: #007300;
+    height: 3rem;
+    padding-inline: 2rem;
+    font-weight: bolder;
+    color: white;
+    font-size: 1rem;
+    border: black solid 0.2rem;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+}
+
+.whole::after {
+    content: '';
+    position: absolute;
+    background-image: url(../../images/logo/patternviaje.png);
+    background-size: 20rem;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.1;
+    filter: blur(0.5rem) drop-shadow(black -0.2rem 0.2rem 0.2rem);
+}

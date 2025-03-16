@@ -1,0 +1,18 @@
+.whole {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+h1 {
+  padding-top: 2rem;
+}
+
+form {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}

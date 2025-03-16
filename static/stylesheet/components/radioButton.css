@@ -1,0 +1,26 @@
+.radioBtn{
+    display: flex;
+    gap: 0.2rem;
+}
+.rbtnCon{
+    display: flex;
+}
+.rbtnCon input[type="radio"]{
+    display: none;
+}
+.rbtnCon input[type="radio"]:checked + label{
+    background-color: var(--main-color);
+    color: white;
+}
+.rbtnCon label{
+    padding: 0.5rem;
+    padding-inline: 2rem;
+    background-color: var(--gray-tone);
+    border-radius: 1rem 1rem 0 0;
+    font-weight: bolder;
+    cursor: pointer;
+    border-left: hsl(from var(--main-color)h s l / 0.3) solid 0.2rem;
+    border-top: hsl(from var(--main-color)h s l / 0.3) solid 0.2rem;
+    border-right: hsl(from var(--main-color)h s l / 0.3) solid 0.2rem;
+    box-sizing: border-box;
+}

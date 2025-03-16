@@ -1,0 +1,109 @@
+.header{
+    height: 8vh;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 1rem;
+}
+.logo-header{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+.logo-header img{
+    height: 60%;
+}
+.logo-header p:not(.sidebarCollapse p){
+    color: var(--main-color);
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+.logo-header i:not(.sidebarCollapse i){
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-right: 1rem;
+}
+
+.nav-header{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.nav-header a{
+    color: white;
+    text-decoration: none;
+    font-weight: bolder;
+}
+.nav-header a:hover{
+    color: var(--main-color);
+}
+
+
+.profile{
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pp{
+    height: 70%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border: var(--main-color) solid 2px;
+    box-sizing: border-box;
+    background-color: hsl(from var(--main-color)h s l / 0.3);
+    cursor: pointer;
+}
+.pp img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+.logout{
+    position: absolute;
+    z-index: 100;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    animation: logout 0.5s ease forwards;
+}
+@keyframes logout {
+    from{
+        top: 90%;
+        opacity: 0;
+    }
+    to{
+        top: 110%;
+        opacity: 1;
+    }
+}
+.logout p{
+    padding: 0.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+
+.collapse{
+    display: none;
+}
+
+.sidebarCollapse{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    top: 8vh;
+    left: 0;
+    background-color: var(--gray-tone);
+    padding: 1rem;
+    box-sizing: border-box;
+}

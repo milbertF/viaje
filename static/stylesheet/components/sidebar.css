@@ -1,0 +1,71 @@
+.sidemenu{
+    position: relative;
+    z-index: 1;
+    width: 15rem;
+    height: 100%;
+    min-width: 15rem;
+    background-color: var(--gray-tone);
+    padding: 1rem;
+    box-sizing: border-box;
+    box-shadow: var(--box-shadow);
+    overflow: auto;
+}
+.partSidenav{
+    margin-bottom: 1rem;
+}
+.rec{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: black solid 1px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+.rec p{
+    font-size: 0.8rem;
+    color: var(--main-color);
+}
+.rec i{
+    font-size: 0.8rem;
+    color: var(--main-color);
+}
+
+.side-nav{
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    overflow: hidden;
+}
+.side-nav p {
+    font-weight: bolder;
+    width: 25ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.side-nav:hover{
+    background-color: hsl(from var(--main-color)h s l / 0.2);
+}
+.side-nav:hover .side-nav-icon i{
+    color: var(--main-color);
+    scale: 1.5;
+}
+
+
+.side-nav-icon{
+    height: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.side-nav-icon i{
+    font-size: 1rem;
+    transition: scale 0.5s ease;
+}
+
+
+

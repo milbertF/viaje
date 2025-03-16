@@ -1,0 +1,53 @@
+/* div{
+    border: red solid 1px;
+} */
+
+.whole {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+  isolation: isolate;
+}
+.whole::before {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background-image: url(../../images/logo/patternviaje.png);
+  background-size: 20rem;
+  opacity: 0.2;
+  filter: blur(0.5rem) drop-shadow(black -0.2rem 0.2rem 0.2rem);
+}
+
+.thankyou {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+}
+.thankyou p {
+  font-size: clamp(1rem, 2vw, 1.8rem);
+  margin-inline: 2rem;
+  text-align: center;
+  font-weight: normal;
+  letter-spacing: 0.1rem;
+}
+.thankyou h1 {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  margin-inline: 2rem;
+  text-align: center;
+  font-weight: 900;
+  text-shadow: black -0.1rem 0.1rem 0.3rem;
+  line-height: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+button {
+  margin-top: 7rem;
+}

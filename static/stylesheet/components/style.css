@@ -1,0 +1,201 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
+@import url("../components/form.css");
+@import url("../components/button.css");
+@import url("../components/header.css");
+@import url("../components/radioButton.css");
+@import url("../components/responsive.css");
+@import url("../components/sidebar.css");
+@import url("../components/table.css");
+
+:root {
+  --main-color: #007300;
+  --bg-color: #004600;
+  --gray-tone: #d9d9d9;
+  --box-shadow: rgba(0, 0, 0, 0.5) 0rem 0rem 1rem;
+  --shadow-bottom: rgba(0, 0, 0, 1) 0rem 1.5rem 1.5rem -1rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 0.3rem;
+  height: 0.3rem;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-color);
+}
+::-webkit-scrollbar-track {
+  background-color: var(--gray-tone);
+}
+
+/* div {
+  border: red solid 1px;
+}
+form {
+  border: blue solid 1px;
+} */
+
+/* *{
+    background-color: #00730007;
+} */
+
+.whole {
+  min-height: 100dvh;
+  position: relative;
+}
+.con {
+  position: relative;
+  height: 92vh;
+  display: flex;
+}
+
+.container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  height: 100%;
+}
+.titleTop {
+  min-height: 7%;
+  background-color: var(--gray-tone);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--box-shadow);
+}
+.titleTop p {
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--main-color);
+}
+
+.wrap {
+  height: 93%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  box-sizing: border-box;
+  gap: 1rem;
+}
+.wrap2 {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.content {
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: var(--box-shadow);
+  max-width: 100%;
+  height: 90%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.content2 {
+  height: auto;
+  padding: 1rem;
+  box-shadow: var(--box-shadow);
+  border-radius: 1rem;
+}
+
+.searchcon {
+  position: relative;
+  min-height: 5%;
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  align-items: center;
+}
+.searchcon input {
+  width: 20rem;
+  max-width: 100%;
+  height: 100%;
+  padding-left: 2rem;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.searchcon .icon {
+  position: absolute;
+  left: 0.5rem;
+  fill: black;
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+@media (max-width: 1200px) {
+  .titleTop p {
+    font-size: 1rem;
+  }
+}
+
+.modals {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 0;
+  background-color: transparent;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.success-message p {
+  font-weight: bolder;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 1rem;
+  padding: 0.5rem 2rem;
+  box-shadow: var(--main-color) 0rem 0rem 2rem;
+  animation: modalsp 10s ease forwards;
+  color: var(--main-color);
+}
+
+.error-message p {
+  font-weight: bolder;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0.5rem;
+  position: absolute;
+  top: 1rem;
+  padding: 0.5rem 2rem;
+  box-shadow: red 0rem 0rem 2rem;
+  animation: modalsp 10s ease forwards;
+  color: red;
+}
+
+@keyframes modalsp {
+  0% {
+    top: -3rem;
+    opacity: 0;
+  }
+  10% {
+    top: 1rem;
+    opacity: 1;
+  }
+  90% {
+    top: 1rem;
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    top: -3rem;
+  }
+}
+
+/* div {
+  border: red solid 1px;
+} */

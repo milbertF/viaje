@@ -1,0 +1,57 @@
+/* div {
+  border: red dashed 0.5px;
+} */
+
+.riderLoginWrap {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(20, 20, 20);
+}
+
+.riderLoginWrap::after {
+  content: "";
+  position: absolute;
+  background-image: url(../../images/logo/patternviaje.png);
+  background-size: 20rem;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  /* z-index: ; */
+  opacity: 0.2;
+  filter: blur(0.5rem) drop-shadow(black -0.2rem 0.2rem 0.2rem);
+}
+
+.loginContainer {
+  width: 20rem;
+  max-width: 90%;
+  border-radius: 1rem;
+  padding: 1rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: var(--main-color) solid 0.2rem;
+  box-shadow: black 0rem 0rem 1rem;
+  background-color: white;
+  z-index: 2;
+}
+
+.loginContainer h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+/* .loginContainer input {
+  background-color: white;
+} */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

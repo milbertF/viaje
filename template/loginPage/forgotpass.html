@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viaje / Admin Accounts</title>
+    <link rel="shortcut icon" href="../../static/images/logo/logoViaje.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../static/stylesheet/components/style.css">
+    <link rel="stylesheet" href="../../static/stylesheet/css/index.css">
+</head>
+<body>
+    <div class="whole">
+        <div class="indexwrap">
+            <div class="indexcon">
+                <h1>Please Provide your Email</h1>
+                <div class="errorBanner">
+                    <p>No Email Found</p>
+                </div>
+                <form class="form" action="">
+
+                    <div class="inpPart">
+                        <label for="Email">Email</label>
+                        <div class="input">
+                            <input type="email" id="Email" name="forgot">
+                        </div>
+                    </div>
+                </form>
+                
+                <button onclick="redirect('authentication.html')">Send Email</button>
+
+                <p class="backToLogin" onclick="redirect('index.php')">Back to Login</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="../../static/javascript/header.js"></script>
+    <script src="../../static/javascript/sidebar.js"></script>
+    <script src="../../static/javascript/script.js"></script>
+
+
+
+</body>
+</html>

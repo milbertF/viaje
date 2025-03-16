@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viaje / Admin Accounts</title>
+    <link rel="shortcut icon" href="../../static/images/logo/logoViaje.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../static/stylesheet/components/style.css">
+    <link rel="stylesheet" href="../../static/stylesheet/css/index.css">
+</head>
+<body>
+    <div class="whole">
+        <div class="indexwrap">
+            <div class="indexcon">
+                <h1>We've sent you an Email</h1>
+
+                <div class="errorBanner">
+                    <p>No Email Found</p>
+                </div>
+
+                <form class="form" action="">
+                    <div class="inpPartAuth">
+                        <div class="input">
+                            <input type="number" name="auth" min="0" max="9" oninput="moveNext(this)" onkeydown="movePrev(event, this)" />
+                        </div>
+                        <div class="input">
+                            <input type="number" name="auth" min="0" max="9" oninput="moveNext(this)" onkeydown="movePrev(event, this)" />
+                        </div>
+                        <div class="input">
+                            <input type="number" name="auth" min="0" max="9" oninput="moveNext(this)" onkeydown="movePrev(event, this)" />
+                        </div>
+                        <div class="input">
+                            <input type="number" name="auth" min="0" max="9" oninput="moveNext(this)" onkeydown="movePrev(event, this)" />
+                        </div>
+                        <div class="input">
+                            <input type="number" name="auth" min="0" max="9" oninput="moveNext(this)" onkeydown="movePrev(event, this)" />
+                        </div>
+                        <div class="input">
+                            <input type="number" name="auth" min="0" max="9" oninput="moveNext(this)" onkeydown="movePrev(event, this)" />
+                        </div>
+                    </div>
+                </form>
+                
+                <button>Comfirm</button>
+
+                <p class="backToLogin" onclick="redirect('index.html')">Back to Login</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="../../static/javascript/header.js"></script>
+    <script src="../../static/javascript/sidebar.js"></script>
+    <script src="../../static/javascript/script.js"></script>
+    <script>
+        function moveNext(current) {
+            if (current.value.length === 1) {
+                let nextInput = current.parentElement.nextElementSibling?.querySelector('input');
+                if (nextInput) {
+                    nextInput.focus();
+                }
+            } else if (current.value.length > 1) {
+                current.value = current.value[0];
+                let nextInput = current.parentElement.nextElementSibling?.querySelector('input');
+                if (nextInput) {
+                    nextInput.focus();
+                }
+            }
+        }
+
+        function movePrev(event, current) {
+            if (event.key === "Backspace" && current.value === "") {
+                let prevInput = current.parentElement.previousElementSibling?.querySelector('input');
+                if (prevInput) {
+                    prevInput.focus();
+                }
+            }
+        }
+    </script>
+
+
+
+</body>
+</html>
