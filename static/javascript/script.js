@@ -148,7 +148,7 @@ function openView(button) {
     })
     .catch((error) => {
       console.error("Error fetching rider details:", error);
-      alert("Failed to fetch rider details.");
+      // alert("Failed to fetch rider details.");
     });
 
   window.location.href = `riderDetails.php?rider_id=${riderId}`;

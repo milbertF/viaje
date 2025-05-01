@@ -1,10 +1,6 @@
 <?php
 include 'dbConnection.php';
 
-// Log received data for debugging
-file_put_contents("debug_log.txt", "GET Data: " . json_encode($_GET) . PHP_EOL, FILE_APPEND);
-
-
 // Check if 'month' is set and valid
 if (!isset($_GET['month']) || !is_numeric($_GET['month'])) {
     echo json_encode([

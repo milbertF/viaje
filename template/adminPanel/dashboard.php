@@ -1,3 +1,5 @@
+<!-- Dashboard -->
+
 <?php
 session_start();
 include '../../php/dbConnection.php';
@@ -10,7 +12,6 @@ if (!isset($_SESSION['adminID'])) {
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-// Fetch vehicle type counts for the current month
 $month = date('m');
 $vehicleTypes = ['Car', 'Tricycle', 'Tuktuk', 'Motorcycle'];
 $vehicleCounts = [];
@@ -84,31 +85,30 @@ $profilePicture = isset($_SESSION['profile_picture']) ? $_SESSION['profile_pictu
     <script>
         document.getElementById('filterDate').addEventListener('change', function() {
             let selectedMonth = this.value;
-            console.log("Selected Month:", selectedMonth); // Debugging
+            console.log("Selected Month:", selectedMonth);
 
             fetchData(selectedMonth);
         });
 
-        // Call fetch on page load to display the current month data
         window.onload = function() {
-            let currentMonth = new Date().getMonth() + 1; // JS months start from 0
+            let currentMonth = new Date().getMonth() + 1;
             document.getElementById('filterDate').value = currentMonth;
 
             fetchData(currentMonth);
         };
 
-        let chart; // Declare chart globally
+        let chart;
 
         function fetchData(month) {
             let url = `../../php/fetch_vehicle_report.php?month=${encodeURIComponent(month)}`;
 
             console.log("Function fetchData() is running...");
-            console.log("Fetching data from:", url); // Debugging: Check the URL
+            console.log("Fetching data from:", url);
 
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
-                    console.log("Response from Server:", data); // Debugging
+                    console.log("Response from Server:", data);
 
                     if (data.error) {
                         console.error("Error from PHP:", data.error);
@@ -127,12 +127,10 @@ $profilePicture = isset($_SESSION['profile_picture']) ? $_SESSION['profile_pictu
             let yValues = [data.Car, data.Tricycle, data.Tuktuk, data.Motorcycle];
             let barColors = ["red", "blue", "yellow", "green"];
 
-            // Destroy the previous chart instance if it exists
             if (chart) {
                 chart.destroy();
             }
 
-            // Create a new chart instance
             chart = new Chart("myChart", {
                 type: "bar",
                 data: {

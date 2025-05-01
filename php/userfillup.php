@@ -1,3 +1,5 @@
+<!-- Rider Application / Registration Form -->
+
 <?php
 session_start();
 include_once "dbConnection.php";
@@ -27,7 +29,6 @@ function generateAutoID($table, $column, $conn)
 
 $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/static/images/uploads/';
 
-// Ensure the upload directory exists
 if (!is_dir($uploadDir)) {
     if (!mkdir($uploadDir, 0755, true)) {
         die('Failed to create upload directory.');
@@ -43,9 +44,8 @@ if (isset($_FILES['licensePicture']) && $_FILES['licensePicture']['error'] === U
         die('Failed to upload license picture. Ensure the upload directory exists and has write permissions.');
     }
 
-    $licensePicturePath = '../static/images/uploads/' . $licensePictureName; // Adjust to match your relative path
+    $licensePicturePath = '../static/images/uploads/' . $licensePictureName;
 }
-
 
 $facePicturePath = null;
 if (isset($_FILES['facePicture']) && $_FILES['facePicture']['error'] === UPLOAD_ERR_OK) {
@@ -58,8 +58,6 @@ if (isset($_FILES['facePicture']) && $_FILES['facePicture']['error'] === UPLOAD_
         die('Failed to upload face picture.');
     }
 }
-
-
 
 $email = $_POST['email'] ?? null;
 $firstName = $_POST['firstName'] ?? null;
@@ -76,6 +74,7 @@ $postalCode = $_POST['postalCode'] ?? null;
 $street = $_POST['street'] ?? null;
 $licenseNo = $_POST['licenseNo'] ?? null;
 $vehicleType = $_POST['vehicleType'] ?? null;
+$vehicleCapacity = $_POST['vehicleCapacity'] ?? null;
 $vehiclePlateNo = $_POST['vehiclePlateNo'] ?? null;
 $vehicleMake = $_POST['vehicleMake'] ?? null;
 $vehicleModel = $_POST['vehicleModel'] ?? null;
@@ -84,8 +83,6 @@ $vehicleColor = $_POST['vehicleColor'] ?? null;
 $vehicleOwnership = $_POST['vehicleOwnership'] ?? null;
 $status = $_POST['status'] ?? "Pending";
 $vehicleStatus = $_POST['vehicleStatus'] ?? "Approved";
-
-
 $riderID = generateAutoID("rider", "rider_id", $conn);
 $addressID = generateAutoID("rider_addresses", "address_id", $conn);
 $licenseID = generateAutoID("rider_licenses", "license_id", $conn);
@@ -112,20 +109,17 @@ $riderStmt->bind_param(
 );
 
 if (!$riderStmt->execute()) {
-    // die("Error inserting into riders: " . $riderStmt->error);
     $_SESSION['errorMessage'] = "Error inserting into riders: " . $riderStmt->error;
     header("Location: ../template/fillupForm/userfillup.php");
     exit;
 }
 $riderStmt->close();
 
-// Insert into `rider_addresses` table
 $addressStmt = $conn->prepare("
     INSERT INTO rider_addresses (address_id, rider_id, region, province, municipality, barangay, street, postal_code) 
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
 ");
 if ($addressStmt === false) {
-    // die("Error preparing statement: " . $conn->error);
     $_SESSION['errorMessage'] = "Error preparing statement: " . $conn->error;
     header("Location: ../template/fillupForm/userfillup.php");
     exit;
@@ -143,22 +137,17 @@ $addressStmt->bind_param(
 );
 
 if (!$addressStmt->execute()) {
-    // die("Error inserting into rider_addresses: " . $addressStmt->error);
-
     $_SESSION['errorMessage'] = "Error inserting into rider_addresses: " . $addressStmt->error;
     header("Location: ../template/fillupForm/userfillup.php");
     exit;
 }
 $addressStmt->close();
 
-// Insert into `rider_licenses` table
 $licenseStmt = $conn->prepare("
     INSERT INTO rider_licenses (license_id, rider_id, license_no, license_picture, face_picture) 
     VALUES (?, ?, ?, ?, ?)
 ");
 if ($licenseStmt === false) {
-    // die("Error preparing statement: " . $conn->error);
-
     $_SESSION['errorMessage'] = "Error preparing statement: " . $conn->error;
     header("Location: ../template/fillupForm/userfillup.php");
     exit;
@@ -173,31 +162,27 @@ $licenseStmt->bind_param(
 );
 
 if (!$licenseStmt->execute()) {
-    // die("Error inserting into rider_licenses: " . $licenseStmt->error);
-
     $_SESSION['errorMessage'] = "Error inserting into rider_licenses: " . $licenseStmt->error;
     header("Location: ../template/fillupForm/userfillup.php");
     exit;
 }
 $licenseStmt->close();
 
-// Insert into `rider_vehicles` table
 $vehicleStmt = $conn->prepare("
-    INSERT INTO rider_vehicles (vehicle_id, rider_id, vehicle_type, vehicle_plate_no, vehicle_make, vehicle_model, model_year, vehicle_color, vehicle_ownership, vehicle_status) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO rider_vehicles (vehicle_id, rider_id, vehicle_type, vehicle_capacity, vehicle_plate_no, vehicle_make, vehicle_model, model_year, vehicle_color, vehicle_ownership, vehicle_status) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 ");
 if ($vehicleStmt === false) {
-    // die("Error preparing statement: " . $conn->error);
-
     $_SESSION['errorMessage'] = "Error preparing statement: " . $conn->error;
     header("Location: ../template/fillupForm/userfillup.php");
     exit;
 }
 $vehicleStmt->bind_param(
-    "sissssssss",
+    "sisssssssss",
     $vehicleID,
     $riderID,
     $vehicleType,
+    $vehicleCapacity,
     $vehiclePlateNo,
     $vehicleMake,
     $vehicleModel,
@@ -208,26 +193,20 @@ $vehicleStmt->bind_param(
 );
 
 if (!$vehicleStmt->execute()) {
-    // die("Error inserting into rider_vehicles: " . $vehicleStmt->error);
-
     $_SESSION['errorMessage'] = "Error inserting into rider_vehicles: " . $vehicleStmt->error;
     header("Location: ../template/fillupForm/userfillup.php");
     exit;
 }
 $vehicleStmt->close();
 
-
-// Vehicle Image Upload and Database Insertion Code
 $vehicleImagesDir = $_SERVER['DOCUMENT_ROOT'] . '/static/images/vehicleImages/';
 
-// Ensure the vehicle images directory exists
 if (!is_dir($vehicleImagesDir)) {
     if (!mkdir($vehicleImagesDir, 0755, true)) {
         die('Failed to create vehicle images directory.');
     }
 }
 
-// Function to upload and save vehicle image
 function uploadVehicleImage($file, $type, $vehicleID)
 {
     global $vehicleImagesDir;
@@ -244,12 +223,10 @@ function uploadVehicleImage($file, $type, $vehicleID)
     return null;
 }
 
-// Uploading vehicle images
 $frontViewPath = uploadVehicleImage($_FILES['frontViewImage'], 'frontview', $vehicleID);
 $sideViewPath = uploadVehicleImage($_FILES['SideViewImage'], 'sideview', $vehicleID);
 $backViewPath = uploadVehicleImage($_FILES['BackViewImage'], 'backview', $vehicleID);
 
-// Insert vehicle images paths into the database
 $vehicleImageStmt = $conn->prepare("
     INSERT INTO vehicle_images (vehicle_id, rider_id, frontview_image, sideview_image, backview_image) 
     VALUES (?, ?, ?, ?, ?)

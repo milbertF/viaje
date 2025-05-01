@@ -146,7 +146,7 @@ include "../../php/riderDetailsFetch.php";
                             </div>
                         </div>
                         <div class="btnRD">
-                            <button onclick="openSetPassword2(document.getElementById('add-Account-Container').getAttribute('data-rider-id'))">Approve</button>
+                            <button onclick="openSetPassword2('<?= htmlspecialchars($rider['rider_id'] ?? '') ?>')">Approve</button>
 
 
                             <button onclick="setDecline(this)" data-id="<?= htmlspecialchars($row['rider_id']) ?>">Decline</button>
@@ -161,7 +161,7 @@ include "../../php/riderDetailsFetch.php";
             </div>
         </div>
 
-        <div class="setPassword" id="setPassword" style="display: flex;">
+        <div class="setPassword" id="setPassword" style="display: none;">
             <div class="setPasswordBox">
                 <h1>Set Password for Rider</h1>
                 <div class="inpPart">

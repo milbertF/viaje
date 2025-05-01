@@ -1,3 +1,5 @@
+<!-- Fare Rate -->
+
 <?php
 session_start();
 include 'dbConnection.php';

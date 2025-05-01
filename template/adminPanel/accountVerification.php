@@ -99,7 +99,7 @@ include_once "../../php/accountVerification.php";
                                     </div>
                                 </i>
                             </div>
-                            <div class="tableCon">
+                            <div class="tableCon2">
                                 <table>
                                     <tr class="trheader">
                                         <td>Action</td>
@@ -120,6 +120,7 @@ include_once "../../php/accountVerification.php";
                                         <td class="AddressClass">Postal Code</td>
                                         <td class="AddressClass">Street</td>
                                         <td class="vehicleClass">Vehicle Type</td>
+                                        <td class="vehicleClass">Vehicle Capacity</td>
                                         <td class="vehicleClass">Vehicle Plate No.</td>
                                         <td class="vehicleClass">Vehicle Make</td>
                                         <td class="vehicleClass">Vehicle Model</td>
@@ -166,6 +167,7 @@ include_once "../../php/accountVerification.php";
                                                 <td class="AddressClass"><?= htmlspecialchars($row['postal_code']) ?></td>
                                                 <td class="AddressClass"><?= htmlspecialchars($row['street']) ?></td>
                                                 <td class="vehicleClass"><?= htmlspecialchars($row['vehicle_type']) ?></td>
+                                                <td class="vehicleClass"><?= htmlspecialchars($row['vehicle_capacity']) ?></td>
                                                 <td class="vehicleClass"><?= htmlspecialchars($row['vehicle_plate_no']) ?></td>
                                                 <td class="vehicleClass"><?= htmlspecialchars($row['vehicle_make']) ?></td>
                                                 <td class="vehicleClass"><?= htmlspecialchars($row['vehicle_model']) ?></td>

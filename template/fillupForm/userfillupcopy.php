@@ -36,7 +36,6 @@ $profilePicture = isset($_SESSION['profile_picture']) ? $_SESSION['profile_pictu
 
 <body>
     <div class="whole">
-        <!-- Show success or error message -->
         <?php if ($successMessage): ?>
             <div class="modals success-message" role="dialog">
                 <p><?php echo htmlspecialchars($successMessage); ?></p>
@@ -320,6 +319,12 @@ $profilePicture = isset($_SESSION['profile_picture']) ? $_SESSION['profile_pictu
                                     <option value="Tricycle">Tricycle</option>
                                     <option value="Auto Rickshaw (tuktuk)">Auto Rickshaw (tuktuk)</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="inpPart">
+                            <label>Vehicle Capacity. <span>*</span></label>
+                            <div class="input">
+                                <input type="number" name="vehicleCapacity" required>
                             </div>
                         </div>
                         <div class="inpPart">
